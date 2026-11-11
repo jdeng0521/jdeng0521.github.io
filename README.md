@@ -5,7 +5,7 @@
 ## 修改内容
 
 - 用文本编辑器打开 `index.html`，可以直接修改简介、经历和教育背景。新增或删除研究条目时，留意链接和对应的锚点。
-- 若要换成照片，可将图片放进 `images/`，把 `figure.portrait` 里的 SVG 换成带替代文字的 `<img src="./images/avatar.jpg" alt="Wenbo Deng">`，再删除 figure 上的 `aria-hidden`。上传时保留图片目录结构。
+- 头像照片和 `index.html` 放在同一目录。更换照片时，更新 `portraits` 列表中的文件名、取景位置和替代文字。若更换默认正面照，也请更新 `<noscript>` 中的图片。
 - 更新页面标题 `<title>` 和描述 `<meta name="description">`，保存后刷新浏览器检查文字、链接和图片。
 
 ## 发布到 GitHub Pages

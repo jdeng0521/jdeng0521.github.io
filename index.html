@@ -31,8 +31,10 @@
     .skip:focus { transform: none; }
     .page { width: min(1068px, calc(100% - 72px)); margin: 54px auto 0; display: grid; grid-template-columns: 256px minmax(0,1fr); gap: 60px; }
     .profile { min-width: 0; }
-    .portrait { margin: 0 0 21px; padding: 8px; border: 1px solid var(--line); border-radius: 53px; box-shadow: 0 2px 10px #291b4611; }
-    .portrait svg, .portrait img { display: block; width: 100%; aspect-ratio: 240 / 270; border-radius: 45px; object-fit: cover; }
+    .portrait { margin: 0 0 17px; }
+    .portrait-frame { padding: 8px; border: 1px solid var(--line); border-radius: 53px; box-shadow: 0 2px 10px #291b4611; }
+    .portrait img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 9; border-radius: 45px; object-fit: cover; background: #f3eef8; }
+    .portrait figcaption { margin-top: 6px; color: var(--muted); text-align: center; font-size: .76rem; line-height: 1.35; }
     h1,h2,h3,p { margin: 0; }
     h1 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.025em; }
     .native-name { display: block; font-size: 1.1rem; color: var(--muted); margin: 3px 0 16px; }
@@ -62,15 +64,17 @@
     footer { grid-column: 2; margin: -23px 0 35px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
     @media (max-width: 930px) {
       .page { grid-template-columns: 206px minmax(0,1fr); gap: 37px; }
-      .portrait { border-radius: 43px; }
-      .portrait svg, .portrait img { border-radius: 35px; }
+      .portrait-frame { border-radius: 43px; }
+      .portrait img { border-radius: 35px; }
       footer { margin-top: -5px; }
     }
     @media (max-width: 680px) {
       .page { width: min(525px, calc(100% - 40px)); margin-top: 27px; grid-template-columns: minmax(0,1fr); gap: 30px; }
       .profile { padding-bottom: 23px; border-bottom: 1px solid var(--line); }
-      .portrait { float: left; width: 113px; margin: 0 15px 8px 0; padding: 4px; border-radius: 26px; }
-      .portrait svg, .portrait img { border-radius: 22px; }
+      .portrait { float: left; width: 113px; margin: 0 15px 8px 0; }
+      .portrait-frame { padding: 4px; border-radius: 26px; }
+      .portrait img { border-radius: 22px; }
+      .portrait figcaption { font-size: .67rem; }
       h1 { font-size: 1.48rem; }
       .native-name { margin: 2px 0 7px; }
       .contact { clear: both; display: flex; flex-wrap: wrap; gap: 4px 20px; padding-top: 4px; margin: 0; }
@@ -92,29 +96,54 @@
   <a class="skip" href="#main-content">Skip to content</a>
   <div class="page">
     <header class="profile" aria-label="Profile">
-      <!-- To add a portrait, remove aria-hidden from the figure and replace the SVG with an img with alt text. -->
-      <figure class="portrait" aria-hidden="true">
-        <svg viewBox="0 0 240 270" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="avatar-gradient" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
-              <stop stop-color="#f6f0fb"/><stop offset="1" stop-color="#e7ddf2"/>
-            </linearGradient>
-            <pattern id="avatar-grid" width="17" height="17" patternUnits="userSpaceOnUse">
-              <path d="M17 0H0v17" fill="none" stroke="#d9c9ea" stroke-width=".6"/>
-            </pattern>
-          </defs>
-          <rect width="240" height="270" fill="url(#avatar-gradient)"/>
-          <rect width="240" height="270" fill="url(#avatar-grid)" opacity=".56"/>
-          <g fill="none" stroke="#9c7dbf" opacity=".54">
-            <ellipse cx="120" cy="132" rx="85" ry="53" transform="rotate(-34 120 132)"/>
-            <ellipse cx="120" cy="132" rx="85" ry="53" transform="rotate(34 120 132)"/>
-            <circle cx="120" cy="132" r="86" stroke-dasharray="2 5"/>
-          </g>
-          <circle cx="63" cy="65" r="3.5" fill="#906ab9"/><circle cx="187" cy="184" r="3.5" fill="#906ab9"/>
-          <circle cx="120" cy="132" r="56" fill="#f4edf9" stroke="#cab6e0"/>
-          <text x="120" y="149" text-anchor="middle" fill="#563979" font-family="Georgia, serif" font-size="48" letter-spacing="-3">WD</text>
-        </svg>
+      <figure class="portrait">
+        <div class="portrait-frame" id="portrait-frame">
+          <noscript><img src="portrait-headshot.jpg" width="480" height="540" alt="Wenbo Deng"></noscript>
+        </div>
+        <figcaption id="portrait-caption" hidden>Refresh for a different photo.</figcaption>
       </figure>
+      <script>
+        (() => {
+          const portraits = [
+            { file: "portrait-headshot.jpg", position: "50% 50%", alt: "Wenbo Deng" },
+            { file: "portrait-lakeside.jpg", position: "50% 58%", alt: "Wenbo Deng beside a lake at dusk" },
+            { file: "portrait-waterfall.jpg", position: "50% 88%", alt: "Wenbo Deng in front of a waterfall" },
+            { file: "portrait-stone-wall.jpg", position: "50% 72%", alt: "Wenbo Deng beside a sunlit stone wall" },
+            { file: "portrait-guitar.jpg", position: "50% 47%", alt: "Wenbo Deng playing an electric guitar" }
+          ];
+          const storageKey = "last-profile-portrait";
+          let previous;
+          try {
+            previous = sessionStorage.getItem(storageKey);
+          } catch {
+            // A browser that blocks storage can still choose a random portrait.
+          }
+          const choices = portraits.filter(({ file }) => file !== previous);
+          const portrait = choices[Math.floor(Math.random() * choices.length)];
+          const image = new Image(480, 540);
+          image.fetchPriority = "high";
+
+          function showPortrait({ file, position, alt }) {
+            image.alt = alt;
+            image.style.objectPosition = position;
+            image.src = file;
+          }
+
+          image.addEventListener("load", () => {
+            try {
+              sessionStorage.setItem(storageKey, image.getAttribute("src"));
+            } catch {
+              // The portrait is already visible.
+            }
+          });
+          image.addEventListener("error", () => {
+            if (portrait !== portraits[0]) showPortrait(portraits[0]);
+          }, { once: true });
+          showPortrait(portrait);
+          document.getElementById("portrait-frame").append(image);
+          document.getElementById("portrait-caption").hidden = false;
+        })();
+      </script>
       <h1>Wenbo Deng</h1>
       <span class="native-name" lang="zh-Hans">邓文博</span>
       <p class="affiliation"><strong>Master’s student in ECE</strong><br><a href="https://engineering.jhu.edu/ece/">Johns Hopkins University</a></p>
