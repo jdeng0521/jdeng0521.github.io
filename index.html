@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wenbo Deng is an Electrical and Computer Engineering master's student at Johns Hopkins University working on 3D computer vision, robotics, and deep learning.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wenbo Deng | Johns Hopkins University">
+  <meta property="og:description" content="3D computer vision, robotics, and deep learning.">
+  <title>Wenbo Deng | Johns Hopkins University</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23eee7f9'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia' font-size='22' font-weight='bold' fill='%23543883'%3EWD%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #221d2a;
+      --muted: #5f5668;
+      --violet: #6b3cb5;
+      --violet-deep: #4d277f;
+      --line: #e4ddeb;
+      --tint: #f4eefb;
+      font: 17px/1.61 Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, "Songti SC", serif;
+      color: var(--ink);
+      background: #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: var(--violet); text-decoration-thickness: .075em; text-underline-offset: .17em; }
+    a:hover { color: var(--violet-deep); }
+    a:focus-visible { outline: 2px solid var(--violet); outline-offset: 4px; border-radius: 2px; }
+    .skip { position: absolute; z-index: 2; top: .7rem; left: .7rem; padding: .4rem .75rem; background: white; transform: translateY(-160%); }
+    .skip:focus { transform: none; }
+    .page { width: min(1068px, calc(100% - 72px)); margin: 54px auto 0; display: grid; grid-template-columns: 256px minmax(0,1fr); gap: 60px; }
+    .profile { min-width: 0; }
+    .portrait { margin: 0 0 21px; padding: 8px; border: 1px solid var(--line); border-radius: 53px; box-shadow: 0 2px 10px #291b4611; }
+    .portrait svg, .portrait img { display: block; width: 100%; aspect-ratio: 240 / 270; border-radius: 45px; object-fit: cover; }
+    h1,h2,h3,p { margin: 0; }
+    h1 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.025em; }
+    .native-name { display: block; font-size: 1.1rem; color: var(--muted); margin: 3px 0 16px; }
+    .affiliation { font-size: .94rem; line-height: 1.58; }
+    .affiliation a, .contact a, .text-link { text-decoration: none; }
+    .affiliation a:hover, .contact a:hover, .text-link:hover { text-decoration: underline; }
+    .contact { list-style: none; padding: 0; margin: 22px 0 0; font-size: .94rem; }
+    .contact li + li { margin-top: 7px; }
+    .contact li { display: flex; align-items: baseline; gap: 10px; overflow-wrap: anywhere; }
+    .contact a { color: var(--ink); }
+    .contact a:hover { color: var(--violet); }
+    .contact svg { width: 17px; height: 17px; color: var(--violet); align-self: center; flex: none; }
+    main { min-width: 0; }
+    section + section { margin-top: 36px; }
+    h2 { font-size: 1.39rem; line-height: 1.28; letter-spacing: -.016em; padding: 0 0 8px; margin-bottom: 15px; border-bottom: 1px solid var(--line); }
+    h3 { font-size: 1.04rem; line-height: 1.33; }
+    p + p { margin-top: .8em; }
+    .selected { display: grid; gap: 24px; }
+    .work { display: grid; grid-template-columns: minmax(0, 35%) minmax(0, 1fr); gap: 22px; align-items: center; }
+    .preview { margin: 0; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 2px 5px #291b460c; }
+    .preview svg { display: block; width: 100%; height: auto; }
+    .badge { position: absolute; top: 0; left: 0; padding: 1px 8px; color: var(--violet-deep); background: #eee3f9; border-radius: 0 0 5px 0; font-size: .73rem; font-weight: 700; }
+    .work h3 { margin-bottom: 3px; }
+    .work h3 a { color: var(--violet); }
+    .work p { color: var(--muted); font-size: .94rem; line-height: 1.53; }
+    .entry + .entry { margin-top: 20px; }
+    .entry-header { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; }
+    .date { color: var(--muted); font-size: .86rem; white-space: nowrap; }
+    .entry .meta, .school .meta { color: var(--muted); font-size: .94rem; }
+    .entry ul { padding-left: 1.15em; margin: 5px 0 0; }
+    .entry li + li { margin-top: 2px; }
+    .school { display: grid; grid-template-columns: 53px minmax(0,1fr); align-items: start; gap: 14px; }
+    .school + .school { margin-top: 15px; }
+    .school-mark { display: grid; place-items: center; min-height: 53px; border-radius: 5px; border: 1px solid var(--line); background: var(--tint); color: var(--violet-deep); font-size: .79rem; font-weight: 700; letter-spacing: .05em; }
+    footer { grid-column: 2; margin: -23px 0 35px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
+    @media (max-width: 930px) {
+      .page { grid-template-columns: 206px minmax(0,1fr); gap: 37px; }
+      .portrait { border-radius: 43px; }
+      .portrait svg, .portrait img { border-radius: 35px; }
+      .work { gap: 15px; }
+      footer { margin-top: -5px; }
+    }
+    @media (max-width: 680px) {
+      .page { width: min(525px, calc(100% - 40px)); margin-top: 27px; grid-template-columns: minmax(0,1fr); gap: 30px; }
+      .profile { padding-bottom: 23px; border-bottom: 1px solid var(--line); }
+      .portrait { float: left; width: 113px; margin: 0 15px 8px 0; padding: 4px; border-radius: 26px; }
+      .portrait svg, .portrait img { border-radius: 22px; }
+      h1 { font-size: 1.48rem; }
+      .native-name { margin: 2px 0 7px; }
+      .contact { clear: both; display: flex; flex-wrap: wrap; gap: 4px 20px; padding-top: 4px; margin: 0; }
+      .contact li + li { margin-top: 0; }
+      section + section { margin-top: 29px; }
+      footer { grid-column: 1; margin: 0 0 25px; }
+    }
+    @media (max-width: 390px) {
+      .portrait { width: 90px; }
+      .work { grid-template-columns: minmax(0,1fr); gap: 9px; }
+      .preview { max-width: 270px; }
+    }
+    @media print {
+      .page { width: 100%; margin: 0; gap: 24px; grid-template-columns: 145px minmax(0,1fr); }
+      .work, .entry, .school { break-inside: avoid; }
+      .skip { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main-content">Skip to content</a>
+  <div class="page">
+    <header class="profile" aria-label="Profile">
+      <!-- To add a portrait, remove aria-hidden from the figure and replace the SVG with an img with alt text. -->
+      <figure class="portrait" aria-hidden="true">
+        <svg viewBox="0 0 240 270" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="avatar-gradient" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+              <stop stop-color="#f6f0fb"/><stop offset="1" stop-color="#e7ddf2"/>
+            </linearGradient>
+            <pattern id="avatar-grid" width="17" height="17" patternUnits="userSpaceOnUse">
+              <path d="M17 0H0v17" fill="none" stroke="#d9c9ea" stroke-width=".6"/>
+            </pattern>
+          </defs>
+          <rect width="240" height="270" fill="url(#avatar-gradient)"/>
+          <rect width="240" height="270" fill="url(#avatar-grid)" opacity=".56"/>
+          <g fill="none" stroke="#9c7dbf" opacity=".54">
+            <ellipse cx="120" cy="132" rx="85" ry="53" transform="rotate(-34 120 132)"/>
+            <ellipse cx="120" cy="132" rx="85" ry="53" transform="rotate(34 120 132)"/>
+            <circle cx="120" cy="132" r="86" stroke-dasharray="2 5"/>
+          </g>
+          <circle cx="63" cy="65" r="3.5" fill="#906ab9"/><circle cx="187" cy="184" r="3.5" fill="#906ab9"/>
+          <circle cx="120" cy="132" r="56" fill="#f4edf9" stroke="#cab6e0"/>
+          <text x="120" y="149" text-anchor="middle" fill="#563979" font-family="Georgia, serif" font-size="48" letter-spacing="-3">WD</text>
+        </svg>
+      </figure>
+      <h1>Wenbo Deng</h1>
+      <span class="native-name" lang="zh-Hans">邓文博</span>
+      <p class="affiliation"><strong>Master’s student in ECE</strong><br><a href="https://engineering.jhu.edu/ece/">Johns Hopkins University</a></p>
+      <ul class="contact" aria-label="Contact and links">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+          <a href="mailto:wdeng15@jh.edu">wdeng15@jh.edu</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.86c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.84.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.11-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.21 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          <a href="https://github.com/jdeng0521">GitHub</a>
+        </li>
+      </ul>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>I’m a master’s student in <strong>Electrical and Computer Engineering</strong> at <a class="text-link" href="https://engineering.jhu.edu/ece/">Johns Hopkins University</a>. I received my bachelor’s degree in Automation from <a class="text-link" href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.</p>
+        <p>My research has taken me from reconstructing deformable tissue in endoscopic video to fusing aerial and roadside observations for 3D object detection.</p>
+      </section>
+
+      <section aria-labelledby="research-title">
+        <h2 id="research-title">Research Interests</h2>
+        <p>I’m interested in <strong>3D computer vision, robotics, and deep learning</strong>. My work has focused on spatial perception: how to combine evidence across viewpoints and time, and how to reconstruct scenes when the camera, objects, or the scene itself is moving.</p>
+        <p>I’ve explored these questions through collaborative 3D detection, deformable simultaneous localization and mapping (SLAM), and 3D occupancy prediction for autonomous driving.</p>
+      </section>
+
+      <section aria-labelledby="selected-title">
+        <h2 id="selected-title">Selected Research</h2>
+        <div class="selected">
+          <article class="work">
+            <figure class="preview" aria-hidden="true">
+              <svg viewBox="0 0 252 144" xmlns="http://www.w3.org/2000/svg">
+                <rect width="252" height="144" fill="#f6f2fb"/>
+                <path d="m15 107 108-39 113 39-112 26Z" fill="#e8dff4" stroke="#bda7da"/>
+                <path d="m38 114 108-38m-85 44 107-36m-80 41 106-32m-80 39 106-30M101 76l111 37M78 84l108 35M54 92l106 33M34 100l101 31" fill="none" stroke="#c8b7df" stroke-width=".9"/>
+                <path d="m70 60 52-23 61 16-50 27Z" fill="#dfd1f0" stroke="#bda7da"/>
+                <path d="M70 60v14l63 20V80m0 14 50-26V53m-61-16v14L70 74" fill="none" stroke="#ab8ecf"/>
+                <path d="m123 57-21 40m21-40 45 46" fill="none" stroke="#7952a8" stroke-width="1.4" stroke-dasharray="3 4"/>
+                <circle cx="123" cy="57" r="4.8" fill="#8054ac"/><circle cx="102" cy="97" r="3.6" fill="#8054ac"/><circle cx="168" cy="103" r="3.6" fill="#8054ac"/>
+              </svg>
+              <span class="badge">Collaborative perception</span>
+            </figure>
+            <div>
+              <h3><a class="text-link" href="#air-ground">Air–Ground Collaborative 3D Detection</a></h3>
+              <p>Selective fusion of aerial, roadside, and historical observations for 3D object detection on the AirV2X benchmark.</p>
+            </div>
+          </article>
+          <article class="work">
+            <figure class="preview" aria-hidden="true">
+              <svg viewBox="0 0 252 144" xmlns="http://www.w3.org/2000/svg">
+                <rect width="252" height="144" fill="#f6f2fb"/>
+                <path d="M22 106c32-43 62-59 91-56 38 4 65 52 117 16v29c-53 37-81-9-118-12-31-3-64 13-90 34z" fill="#e6dbf3"/>
+                <g fill="none" stroke="#b39bd2" stroke-width="1.1">
+                  <path d="M22 106c32-43 62-59 91-56 38 4 65 52 117 16M22 110c32-36 62-51 91-48 38 4 65 51 117 15M22 114c32-30 62-43 91-40 38 4 65 50 117 13M22 118c32-24 62-35 91-32 38 4 65 49 117 11"/>
+                  <path d="m49 78 6 24m17-40 7 32m19-43 5 35m19-34 4 36m17-27 4 37m18-26 5 37m20-28 4 30m19-35 4 29"/>
+                </g>
+                <path d="M47 51c20-17 52-23 80-10 18 8 33 20 53 23" fill="none" stroke="#7952a8" stroke-width="1.4" stroke-dasharray="3 4"/>
+                <circle cx="47" cy="51" r="3.5" fill="#8054ac"/><circle cx="127" cy="41" r="3.5" fill="#8054ac"/><circle cx="180" cy="64" r="3.5" fill="#8054ac"/>
+              </svg>
+              <span class="badge">Medical computer vision</span>
+            </figure>
+            <div>
+              <h3><a class="text-link" href="#deformable-slam">Deformable Endoscopic SLAM</a></h3>
+              <p>Camera tracking and dense reconstruction of deforming tissue using 3D Gaussian splatting.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="experience-title">
+        <h2 id="experience-title">Experience</h2>
+        <article class="entry" id="air-ground">
+          <div class="entry-header"><h3>Intelligent Vision Group at Shenzhen, Tsinghua University</h3><span class="date">Oct 2025 – Jun 2026</span></div>
+          <p class="meta">Research · Advised by Prof. Yansong Tang</p>
+          <ul>
+            <li>Developed a spatiotemporal fusion framework that selectively combines features from aerial and roadside sensors with past bird’s-eye-view features.</li>
+            <li>Used occupancy to organize tokens for a Mamba-based bird’s-eye-view model, improving spatial context in sparse regions.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-header"><h3>Auto City (Shenzhen) Autonomous Driving</h3><span class="date">Dec 2025 – Jun 2026</span></div>
+          <p class="meta">Perception Algorithm Intern</p>
+          <ul>
+            <li>Built a training data pipeline for autonomous street sweepers that processes camera images and LiDAR point clouds and generates segmentation masks and depth maps.</li>
+            <li>Developed a NeRF-based 3D occupancy model using temporal geometry to reduce depth ambiguity and optical flow to help supervise moving objects.</li>
+          </ul>
+        </article>
+        <article class="entry" id="deformable-slam">
+          <div class="entry-header"><h3>Intelligent Robot and Machine Vision Laboratory, SJTU</h3><span class="date">Oct 2023 – Jul 2025</span></div>
+          <p class="meta">Research · Advised by Prof. Hesheng Wang</p>
+          <ul>
+            <li>Worked on online endoscopic SLAM using 3D Gaussian splatting, with submaps to model deformation over long sequences.</li>
+            <li>Used reconstruction errors to identify regions that needed more Gaussians to better capture their geometry and appearance.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-header"><h3>ARCADE Lab, Johns Hopkins University</h3><span class="date">Jul 2024 – Oct 2024</span></div>
+          <p class="meta">Research · Advised by Prof. Mathias Unberath</p>
+          <ul>
+            <li>Evaluated camera pose estimation on endoscopic and public medical datasets. Integrated LEAP-VO’s bundle adjustment module into OneSLAM to improve pose estimates.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <article class="school">
+          <span class="school-mark" aria-hidden="true">JHU</span>
+          <div>
+            <div class="entry-header"><h3>Johns Hopkins University</h3><span class="date">Expected Jun 2028</span></div>
+            <p class="meta">M.S.E. in Electrical and Computer Engineering</p>
+          </div>
+        </article>
+        <article class="school">
+          <span class="school-mark" aria-hidden="true">SJTU</span>
+          <div>
+            <div class="entry-header"><h3>Shanghai Jiao Tong University</h3><span class="date">Jun 2025</span></div>
+            <p class="meta">B.Eng. in Automation</p>
+          </div>
+        </article>
+      </section>
+
+      <section aria-labelledby="interests-title">
+        <h2 id="interests-title">Beyond Research</h2>
+        <p>Outside the lab, I enjoy guitar, rock music, football, photography, and poetry.</p>
+      </section>
+    </main>
+
+    <footer>© 2026 Wenbo Deng</footer>
+  </div>
+</body>
+</html>
